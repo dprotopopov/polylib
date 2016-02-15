@@ -10,10 +10,10 @@ deg P(X) = p-1
 2. Вычисляем значение полинома P(X) = SUM Yi*П <X-Xj,Xi-Xj>/<Xi-Xj,Xi-Xj> 
 
 ### history.txt :
--1 -1 -10
-1 1 10
-0 0 0
--1 1 -8
-1 -1 -20
+- -1 -1 -10
+- 1 1 10
+- 0 0 0
+- -1 1 -8
+- 1 -1 -20
 
 predict.exe -history history.txt -input input.txt -output output.txt
