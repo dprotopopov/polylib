@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "predict", "predict\predict.vcxproj", "{3AD3C12A-F766-40B6-BA2B-E0AF25B65810}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cube", "cube\cube.vcxproj", "{DFB41A99-B2DC-4B67-9F13-F1D5168443EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AD3C12A-F766-40B6-BA2B-E0AF25B65810}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3AD3C12A-F766-40B6-BA2B-E0AF25B65810}.Debug|Win32.Build.0 = Debug|Win32
+		{3AD3C12A-F766-40B6-BA2B-E0AF25B65810}.Release|Win32.ActiveCfg = Release|Win32
+		{3AD3C12A-F766-40B6-BA2B-E0AF25B65810}.Release|Win32.Build.0 = Release|Win32
+		{DFB41A99-B2DC-4B67-9F13-F1D5168443EE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DFB41A99-B2DC-4B67-9F13-F1D5168443EE}.Debug|Win32.Build.0 = Debug|Win32
+		{DFB41A99-B2DC-4B67-9F13-F1D5168443EE}.Release|Win32.ActiveCfg = Release|Win32
+		{DFB41A99-B2DC-4B67-9F13-F1D5168443EE}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

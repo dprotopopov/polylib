@@ -1,0 +1,10 @@
+2016/02/15-13:17:03.736 1df4 Delete type=3 #1
+2016/02/15-13:17:47.940 ecc Level-0 table #5: started
+2016/02/15-13:17:48.247 ecc Level-0 table #5: 4512456 bytes OK
+2016/02/15-13:17:48.302 ecc Delete type=0 #3
+2016/02/15-13:17:48.497 ecc Level-0 table #7: started
+2016/02/15-13:17:48.728 ecc Level-0 table #7: 4351047 bytes OK
+2016/02/15-13:17:48.763 ecc Delete type=0 #4
+2016/02/15-13:17:48.908 ecc Level-0 table #9: started
+2016/02/15-13:17:49.174 ecc Level-0 table #9: 3752310 bytes OK
+2016/02/15-13:17:49.189 ecc Delete type=0 #6
