@@ -1,10 +1,13 @@
 ﻿# Аппроксимация полиномом функции нескольких переменных
+
 ## Классическая формула для апроксимации функции одной переменной
-P(X) = SUM Yi*П ( X-Xj )/( Xi-Xj ) , где i=1..p и j<>i
+- P(X) = SUM Yi*П ( X-Xj )/( Xi-Xj ) , где i=1..p и j<>i
 - deg P(X) = p-1
+
 ## Обобщение классической формулы для апроксимации функции нескольких переменной
-P(X) = SUM Yi*П < X-Xj , Xi-Xj > / < Xi-Xj , Xi-Xj > , где i=1..p и j<>i
+- P(X) = SUM Yi*П < X-Xj , Xi-Xj > / < Xi-Xj , Xi-Xj > , где i=1..p и j<>i
 - deg P(X) = p-1
+
 ## Алгоритм
 1. Для вектора X находим p блихайших точек X1,...,Xp
 2. Вычисляем значение полинома P(X) = SUM Yi*П < X-Xj , Xi-Xj > /< Xi-Xj , Xi-Xj > 
@@ -16,4 +19,5 @@ P(X) = SUM Yi*П < X-Xj , Xi-Xj > / < Xi-Xj , Xi-Xj > , где i=1..p и j<>i
 - -1 1 -8
 - 1 -1 -20
 
-predict.exe -history history.txt -input input.txt -output output.txt
+- predict.exe -history history.txt -input input.txt -output output.txt
+- splot "output.txt"
