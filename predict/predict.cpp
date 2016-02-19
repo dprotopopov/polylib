@@ -11,23 +11,23 @@ struct t_previous_result
 
 /////////////////////////////////////////////////////////
 // ¬ычисление квадрата расто€ни€ между двум€ векторами координат
-double delta(std::vector<double>& a, std::vector<double>& b, std::vector<double>& s2)
+double delta(std::vector<double>& a, std::vector<double>& b, std::vector<double>& dx)
 {
 	auto s = 0.0;
 	auto i = 0;
-	for (; i < a.size() && i < b.size() && i < s2.size(); i++) if (s2[i] > 0.0) s += (a[i] - b[i]) * (a[i] - b[i]) / s2[i];
-	for (; i < a.size() && i < s2.size(); i++) if (s2[i] > 0.0) s += a[i] * a[i] / s2[i];
-	for (; i < b.size() && i < s2.size(); i++) if (s2[i] > 0.0) s += b[i] * b[i] / s2[i];
+	for (; i < a.size() && i < b.size() && i < dx.size(); i++) if (dx[i] > 0.0) s += (a[i] - b[i]) * (a[i] - b[i]) / dx[i];
+	for (; i < a.size() && i < dx.size(); i++) if (dx[i] > 0.0) s += a[i] * a[i] / dx[i];
+	for (; i < b.size() && i < dx.size(); i++) if (dx[i] > 0.0) s += b[i] * b[i] / dx[i];
 	return s;
 }
 
 /////////////////////////////////////////////////////////
 // ¬ычисление расто€ни€ проекции двух векторов
-double scalar(std::vector<double>& a, std::vector<double>& b, std::vector<double>& s2)
+double scalar(std::vector<double>& a, std::vector<double>& b, std::vector<double>& dx)
 {
 	auto s = 0.0;
 	auto i = 0;
-	for (; i < a.size() && i < b.size() && i < s2.size(); i++) if (s2[i] > 0.0) s += (a[i] * b[i]) / s2[i];
+	for (; i < a.size() && i < b.size() && i < dx.size(); i++) if (dx[i] > 0.0) s += (a[i] * b[i]) / dx[i];
 	return s;
 }
 
@@ -35,14 +35,14 @@ double scalar(std::vector<double>& a, std::vector<double>& b, std::vector<double
 // ¬озвращает предсказание дл€ указанных параметров исход€ из исторических данных
 double predict(std::vector<double>& x,
                std::vector<t_previous_result>& previous_results,
-               std::vector<double>& s2,
+               std::vector<double>& dx,
                int p)
 {
 	std::vector<std::pair<t_previous_result, double>> neighbors;
 	for (auto it = previous_results.begin(); it != previous_results.end(); ++it)
 	{
 		std::vector<double>& x2 = it->x;
-		auto d = delta(x, x2, s2);
+		auto d = delta(x, x2, dx);
 		std::pair<t_previous_result, double> pair(*it, d);
 		neighbors.push_back(pair);
 	}
@@ -65,7 +65,7 @@ double predict(std::vector<double>& x,
 			std::vector<double> xixj;
 			for (auto i = 0; i < x.size() && i < xj.size(); i++) xxj.push_back(x[i] - xj[i]);
 			for (auto i = 0; i < xi.size() && i < xj.size(); i++) xixj.push_back(xi[i] - xj[i]);
-			s *= scalar(xxj, xixj, s2) / scalar(xixj, xixj, s2);
+			s *= scalar(xxj, xixj, dx) / scalar(xixj, xixj, dx);
 		}
 		y += s;
 	}
@@ -79,7 +79,7 @@ static const int _p = 3;
 int main(int argc, char* argv[])
 {
 	std::vector<t_previous_result> previous_results;
-	std::vector<double> s2;
+	std::vector<double> dx;
 	char* input_file_name = nullptr;
 	char* output_file_name = nullptr;
 	char* previous_results_file_name = nullptr;
@@ -133,7 +133,7 @@ int main(int argc, char* argv[])
 		}
 		for (auto it = m1.begin(); it != m1.end(); ++it) *it /= previous_results.size();
 		for (auto it = m2.begin(); it != m2.end(); ++it) *it /= previous_results.size();
-		for (auto i = 0; i < m1.size() && i < m2.size(); i++) s2.push_back(m2[i] - m1[i] * m1[i]);
+		for (auto i = 0; i < m1.size() && i < m2.size(); i++) dx.push_back(m2[i] - m1[i] * m1[i]);
 	}
 	while (std::getline(std::cin, line))
 	{
@@ -142,7 +142,7 @@ int main(int argc, char* argv[])
 		std::stringstream ss(line);
 		std::copy(std::istream_iterator<double>(ss), std::istream_iterator<double>(),
 			std::back_inserter(x));
-		y = predict(x, previous_results, s2, p);
+		y = predict(x, previous_results, dx, p);
 		for (auto it = x.begin(); it != x.end(); ++it) std::cout << *it << ' ';
 		std::cout << y << std::endl;
 	}
